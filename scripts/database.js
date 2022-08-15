@@ -15,13 +15,18 @@ const database = {
         { id: 1, style: "17-inch Pair Radial Silver", price: 600},
         { id: 2, style: "17-inch Pair Radial Black", price: 750},
         { id: 3, style: "18-inch Pair Spoke Silver", price: 1000},
-        { id: 4, style: "18-inch Pari Spoke Black", price: 1500},
+        { id: 4, style: "18-inch Pair Spoke Black", price: 1500},
     ],
     paints: [
         { id: 1, style: "Silver", price: 2000},
         { id: 2, style: "Midnight Blue", price: 2000},
         { id: 3, style: "Firebrick Red", price: 2000},
         { id: 4, style: "Spring Green", price: 2000},
+    ],
+    types: [
+        { id: 1, style: "Car", price: 0},
+        { id: 2, style: "SUV", price: 0},
+        { id: 3, style: "Truck", price: 0}
     ],
     customOrders: [
         {
@@ -30,6 +35,7 @@ const database = {
             technologyId: 1,
             wheelId: 1,
             paintId: 1,
+            typeId: 1,
             timestamp: 1259039521
         }
     ],
@@ -51,6 +57,9 @@ export const getPaints = () => {
 export const getOrders = () => {
     return database.customOrders.map(order => ({...order}))
 }
+export const getTypes = () => {
+    return database.types.map(type => ({...type}))
+}
 export const setInterior = (id) => {
     database.orderBuilder.interiorId = id
 }
@@ -63,6 +72,9 @@ export const setWheel = (id) => {
 export const setPaint = (id) => {
     database.orderBuilder.paintId = id
 }
+export const setType = (id) => {
+    database.orderBuilder.typeId = id
+ }
 export const addCustomOrder = () => {
     const newOrder = {...database.orderBuilder}
     const lastIndex = database.customOrders.length - 1
