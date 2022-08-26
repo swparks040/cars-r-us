@@ -27,25 +27,28 @@ const buildOrderListItem = (order) => {
     const foundType = types.find((type) => {
         return type.id === order.typeId;
     })
+    //modify total cost based on type. 
+    // const costPlusType = (vehicleType, vehicleCost) => {
+    //     return 0
+    // }
     
-    const costPlusType = () => {
-        for (const type of types) {
-            let totalCost = 
-            foundInterior.price +
-            foundTechnology.price +
-            foundWheel.price +
-            foundPaint.price +
-            foundType.price;
-            if (type.style === "SUV") {
-                return totalCost * 1.5
-            } else if (type.style === "Truck") {
-                return totalCost * 2.25
-            }
-            return totalCost
-        }
-    }
+    let totalCost = 
+    foundInterior.price +
+    foundTechnology.price +
+    foundWheel.price +
+    foundPaint.price +
+    foundType.price;
     
-    const costString = costPlusType().toLocaleString("en-US", {
+    // let overallPrice = costPlusType(foundType, totalCost) => {
+    //     if (foundType.style === "SUV") {
+    //     return totalCost * 1.5
+    // } else if (foundType.style === "Truck") {
+    //     return totalCost * 2.25
+    // }
+    //     return totalCost
+    // }
+
+    const costString = totalCost.toLocaleString("en-US", {
         style: "currency",
         currency: "USD"
     });
